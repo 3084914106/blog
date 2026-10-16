@@ -29,10 +29,10 @@ weight = 20
   [params.profileMode]
     enabled = true
     subtitle = "some things may seem far away ，but if you strive for them， thy will come closer and closer"
-    imageUrl = "/321.jpg"
+    imageUrl = "321.jpg"
     buttons = [
-      { name = "文章", url = "/posts/" },
-      { name = "归档", url = "/archives/" }
+      { name = "文章", url = "posts/" },
+      { name = "归档", url = "archives/" }
     ]
 
 

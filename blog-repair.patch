@@ -1,0 +1,72 @@
+diff --git a/.github/workflows/hugo-deploy.yml b/.github/workflows/hugo-deploy.yml
+index 0000000..0000000 100644
+--- a/.github/workflows/hugo-deploy.yml
++++ b/.github/workflows/hugo-deploy.yml
+@@ -14,9 +14,11 @@ jobs:
+       - name: Checkout
+         uses: actions/checkout@v4
++        with:
++          submodules: recursive
+ 
+       - name: Setup Hugo
+         uses: peaceiris/actions-hugo@v3
+         with:
+-          hugo-version: '0.145.0'
++          hugo-version: '0.168.0'
+           extended: true
+
+diff --git a/hugo.toml b/hugo.toml
+index 0000000..0000000 100644
+--- a/hugo.toml
++++ b/hugo.toml
+@@ -27,8 +27,8 @@ ShowWordCount = true
+   [params.profileMode]
+     enabled = true
+     subtitle = "some things may seem far away ，but if you strive for them， thy will come closer and closer"
+-    imageUrl = "/321.jpg"
++    imageUrl = "321.jpg"
+     buttons = [
+-      { name = "文章", url = "/posts/" },
++      { name = "文章", url = "posts/" },
+-      { name = "归档", url = "/archives/" }
++      { name = "归档", url = "archives/" }
+     ]
+
+diff --git a/layouts/index.html b/layouts/index.html
+new file mode 100644
+--- /dev/null
++++ b/layouts/index.html
+@@ -0,0 +1,29 @@
++{{ define "main" }}
++  {{- if site.Params.profileMode.enabled }}
++    {{- partial "index_profile.html" . }}
++  {{- end }}
++
++  <section class="home-categories">
++    <header class="page-header">
++      <h2>分类文章</h2>
++    </header>
++
++    {{- range $term, $pages := site.Taxonomies.categories }}
++      <section class="home-category">
++        <h3>
++          <a href="{{ printf "/categories/%s/" ($term | urlize) | relURL }}">{{ $term }}</a>
++        </h3>
++        {{- range $pages.ByDate.Reverse }}
++          <article class="post-entry">
++            <header class="entry-header"><h4>{{ .Title }}</h4></header>
++            {{- if not (.Param "hideSummary") }}
++              <div class="entry-content"><p>{{ .Summary | plainify | htmlUnescape }}{{ if .Truncated }}...{{ end }}</p></div>
++            {{- end }}
++            <footer class="entry-footer">{{ partial "post_meta.html" . }}</footer>
++            <a class="entry-link" aria-label="{{ .Title | plainify }}" href="{{ .RelPermalink }}"></a>
++          </article>
++        {{- end }}
++      </section>
++    {{- end }}
++  </section>
++{{ end }}
+
+
+
+
