@@ -1,0 +1,38 @@
+baseURL = "https://xxx.pages.dev/"
+languageCode = "zh-cn"
+title = "鑫垅笔记"
+theme = "PaperMod"
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+
+[[menu.main]]
+identifier = "categories"
+name = "分类"
+url = "/categories/"
+weight = 10
+[[menu.main]]
+identifier = "tags"
+name = "标签"
+url = "/tags/"
+weight = 20
+
+[params]
+  defaultTheme = "auto"
+  ShowReadingTime = true
+  ShowBreadCrumbs = true
+  ShowPostNavLinks = true
+  ShowCodeCopyButtons = true
+  ShowWordCount = true
+
+  [params.profileMode]
+    enabled = true
+    subtitle = "some things may seem far away ，but if you strive for them， thy will come closer and closer"
+    imageUrl = "/321.jpg"
+    buttons = [
+      { name = "文章", url = "/posts/" },
+      { name = "归档", url = "/archives/" }
+    ]
+
+
