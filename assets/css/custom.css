@@ -1,0 +1,35 @@
+/* 压缩 profile 整体 */
+.profile {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+
+/* 头像从 150px 缩到 80px */
+.profile img {
+    height: 80px !important;
+    width: 80px !important;
+}
+
+/* 名字缩小 */
+.profile h1 {
+    font-size: 1.3rem !important;
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.25rem !important;
+}
+
+/* 简介缩小 */
+.profile > span {
+    font-size: 0.8rem !important;
+    max-width: 400px !important;
+    margin: 0 auto !important;
+}
+
+/* 按钮缩小 */
+.profile .buttons {
+    margin-top: 0.5rem !important;
+}
+
+.profile .button {
+    padding: 0.3rem 0.8rem !important;
+    font-size: 0.8rem !important;
+}

@@ -3,7 +3,7 @@ title: "Hello Notebook"
 date: 2026-10-16T12:00:00+08:00
 draft: false
 categories: ["学习技术"]
-tags: ["技术", "Hugo"]
+tags: ["技术", "Hugo"] 
 ---
 ## 强龙不压地头蛇，后退打基础，al你们磨
 
