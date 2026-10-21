@@ -1,0 +1,36 @@
+
+<!-- 1. 加载播放器的样式 -->
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"
+>
+
+<!-- 2. 加载播放器程序 -->
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+
+<!-- 3. 给播放器提供一个挂载位置 -->
+<div id="blog-bgm"></div>
+
+<script>
+    // 4. 创建播放器，并指定它在页面中的位置
+    new APlayer({
+        container: document.getElementById("blog-bgm"),
+
+        // 固定显示在页面底部
+        fixed: true,
+
+        // 页面打开时不自动播放
+        autoplay: false,
+
+        // 只播放一首歌曲
+        audio: {
+            name: {{ $u := .Param "musicUrl" }}{{ strings.TrimSuffix (path.Ext $u) (path.Base $u) | jsonify }},
+            artist: "BGM",
+
+            // 替换成你实际的音乐文件地址
+            url: {{ strings.TrimPrefix "/" .Params.musicUrl | relURL }},
+
+            // 没有封面需求时，可以不设置 cover
+        }
+    });
+</script>
